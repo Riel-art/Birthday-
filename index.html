@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Password</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('user.jpg') no-repeat center center fixed; /* Ganti URL gambar */
+      background-size: cover; /* Pastikan gambar memenuhi seluruh layar */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    main {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9); /* Warna putih dengan transparansi */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+      max-width: 350px;
+      width: 90%;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #4CAF50;
+    }
+
+    button {
+      width: 85%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #45a049;
+      transform: scale(1.03);
+    }
+
+    button:active {
+      background: #3e8e41;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .terminal {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px; /* Ukuran font kecil */
+      line-height: 1.5;
+      color: #FF00B1; /* Warna hijau khas terminal */
+      background-color: #000000; /* Latar belakang hitam */
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #FF00B1;
+      white-space: pre-wrap; /* Pertahankan spasi dan baris baru */
+      text-align: center; /* Rata tengah teks */
+      display: inline-block; /* Agar pas sesuai konten */
+      margin: 5px auto; /* Rata tengah secara horizontal */
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>Masukan Password</h2>
+    <p>Dapatkan Code Voucher Special dari <strong>Riel Akuonza</strong> untuk kuota internet Telkomsel 7GB sampai 7 hari.</p>
+    <p class="terminal">08080808</p>
+    <p>Masukkan password di atas</p>
+    <input type="password" id="password-input" placeholder="Enter password">
+    <p class="error" id="error-message">Password salah. Silakan coba lagi.</p>
+    <button id="submit-button">Submit</button>
+  </main>
+
+  <script>
+    const passwordInput = document.getElementById("password-input");
+    const submitButton = document.getElementById("submit-button");
+    const errorMessage = document.getElementById("error-message");
+
+    submitButton.addEventListener("click", () => {
+      const password = passwordInput.value.trim();
+      const correctPassword = "08080808";
+
+      if (password === correctPassword) {
+        // Redirect ke halaman lain
+        window.location.href = "vouchers.html"; // Ganti URL dengan halaman tujuan
+      } else {
+        // Tampilkan pesan kesalahan
+        errorMessage.style.display = "block";
+      }
+    });
+
+    passwordInput.addEventListener("input", () => {
+      // Sembunyikan pesan kesalahan saat pengguna mulai mengetik ulang
+      errorMessage.style.display = "none";
+    });
+  </script>
+</body>
+</html>

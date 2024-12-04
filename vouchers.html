@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Kejutan</title>
+  <style>
+    /* Animasi saat halaman dimuat */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Animasi balon emoji 🎈 terbang dengan variasi */
+    @keyframes balloonFly {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('user.jpg') no-repeat center center fixed; /* Ganti URL gambar */
+      background-size: cover; /* Pastikan gambar memenuhi seluruh layar */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Balon Emoji 🎈 dengan variasi animasi */
+    .balloon {
+      position: absolute;
+      font-size: 40px;
+      animation: balloonFly 12s linear infinite;
+      opacity: 0;
+    }
+
+    .balloon:nth-child(1) {
+      animation-delay: 0s;
+      left: 5%;
+    }
+
+    .balloon:nth-child(2) {
+      animation-delay: 2s;
+      left: 20%;
+    }
+
+    .balloon:nth-child(3) {
+      animation-delay: 4s;
+      left: 40%;
+    }
+
+    .balloon:nth-child(4) {
+      animation-delay: 6s;
+      left: 60%;
+    }
+
+    .balloon:nth-child(5) {
+      animation-delay: 8s;
+      left: 80%;
+    }
+
+    .balloon:nth-child(6) {
+      animation-delay: 1s;
+      left: 10%;
+      font-size: 50px;
+    }
+
+    .balloon:nth-child(7) {
+      animation-delay: 3s;
+      left: 50%;
+      font-size: 60px;
+    }
+
+    .balloon:nth-child(8) {
+      animation-delay: 5s;
+      left: 30%;
+      font-size: 45px;
+    }
+
+    /* Tampilan utama */
+    main {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8); /* Background semi-transparan */
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 36px;
+      color: #ff2e63;
+      animation: fadeIn 2s ease-in-out;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      margin: 10px 0 20px;
+      font-size: 16px;
+      color: #555;
+      animation: fadeIn 2s ease-in-out;
+      font-weight: bold;
+    }
+
+    .number-display {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .number-display span {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      background-color: #f8f8f8;
+      margin: 0 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background: #ff2e63;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: #e02456;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      background: #c61f4d;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #28a745;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Balon Emoji 🎈 yang lebih banyak -->
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎈</div>
+
+  <main>
+    <h1>🎉 Kejutan Spesial! 🎉</h1>
+    <p>Salin nomor Voucher dan masukkan ke telepon dengan angka <b>*133*</b></p>
+
+    <!-- Kolom Angka yang Disatukan dalam satu baris -->
+    <div class="number-display">
+      <span id="num">76029 90280 69485 69</span>
+    </div>
+
+    <!-- Tombol Salin -->
+    <button id="copy-button">Salin Nomor</button>
+    
+    <!-- Pesan Kejutan -->
+    <p class="message" id="success-message">Nomor telah disalin ke clipboard! 🎉</p>
+  </main>
+
+  <script>
+    const copyButton = document.getElementById("copy-button");
+    const successMessage = document.getElementById("success-message");
+
+    copyButton.addEventListener("click", () => {
+      // Ambil nilai dari kolom angka
+      const num = document.getElementById("num").textContent.trim();
+
+      // Salin nomor ke clipboard
+      navigator.clipboard.writeText(num).then(() => {
+        // Tampilkan pesan sukses
+        successMessage.style.display = "block";
+      }).catch((err) => {
+        console.error('Gagal menyalin: ', err);
+      });
+    });
+  </script>
+</body>
+</html>
